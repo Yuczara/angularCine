@@ -1,0 +1,61 @@
+<h1 class="text-center mb-5 mt-3">PELICULAS</h1>
+
+
+<div class="container-sm">
+    <div class="row">
+        <div class="col-sm-4 rounded-3" style=" background-color:rgb(181, 210, 255);">
+                <p>
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" [(ngModel)]="pelicula.nombre"/>
+                </p>
+    
+           <!--
+                <table>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-success mb-2 mx-2" 
+                            (click)="this.insertarPelicula()">Insertar</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary mb-2 mx-2" 
+                            (click)="this.update()">Actualizar</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger mb-2 mx-2" 
+                            (click)="this.delete(pelicula.id)">Eliminar</button>
+                        </td>
+            
+                    </tr>
+                </table>
+            </div>
+        <div class="col rounded-3"  style="padding-left: 3rem;">
+            <table class="table">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Genero</th>
+                    <th>Año</th>
+                    <th>Clasificación</th>
+                    <th>Director</th>
+                    <th>Duracion</th>
+                    <th>Imagen</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pelicula of peliculas">
+                        <td>{{ pelicula.nombre }}</td>
+                        <td>{{ pelicula.idGenero }}</td>
+                        <td>{{ pelicula.anio }}</td>
+                        <td>{{ pelicula.clasificacion }}</td>
+                        <td>{{ pelicula.director }}</td>
+                        <td>{{ pelicula.duracion }}</td>
+                        <td><img src="{{ pelicula.url }}" style="width: 80px;"></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="selectPelicula(pelicula)">
+                                Seleccionar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>--> 
+        </div> 
+    </div>
+</div>

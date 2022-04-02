@@ -1,0 +1,64 @@
+<mat-dialog-content>
+<div class="col-sm-4 rounded-3" style=" background-color:rgb(181, 210, 255);">
+    <p>
+        <label>Nombre:</label>
+        <input type="text" class="form-control" [(ngModel)]="pelicula.nombre"/>
+    </p>
+    <p>
+        <label>Sinopsis:</label>
+        <textarea class="form-control" [(ngModel)]="pelicula.sinopsis" cols="30" rows="10"></textarea>
+    </p>
+    <p>
+        <label>Genero</label>
+        <select [(ngModel)]="pelicula.idGenero" class="form-control">
+            <option *ngFor=" let genero of generos" value="{{genero.id}}">
+                {{ genero.descripcion}}
+            </option>
+        </select>
+    </p>
+
+    <p>
+        <label>Año:</label>
+        <input type="text" class="form-control" [(ngModel)]="pelicula.anio"/>
+    </p>
+    <p>
+        <label>clasificacion:</label>
+        <input type="text" class="form-control" [(ngModel)]="pelicula.clasificacion"/>
+    </p>
+    <p>
+        <label>Director:</label>
+        <input type="text" class="form-control" [(ngModel)]="pelicula.director"/>
+    </p>
+    <p>
+        <label>Duracion:</label>
+        <input type="text" class="form-control" [(ngModel)]="pelicula.duracion"/>
+    </p>
+    <p>
+        <label>Imagen:</label>
+        <img src=" [(ngModel)]='pelicula.url'" alt="">
+        <input type="text" class="form-control" [(ngModel)]="pelicula.url"/>
+    </p>
+    <p>
+        <label>Sala</label>
+        <select [(ngModel)]="pelicula.idSala" class="form-control">
+            <option *ngFor=" let sala of salas" value="{{sala.id}}">
+                {{ sala.nombre}}
+            </option>
+        </select>
+    </p>
+</div>
+</mat-dialog-content>
+    <table>
+        <tr>
+            <td>
+                <button type="button" class="btn btn-success mb-2 mx-2" 
+                (click)="this.insertarPelicula()">Insertar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-secondary mb-2 mx-2" 
+                (click)="this.update()">Actualizar</button>
+            </td>
+
+        </tr>
+    </table>
+

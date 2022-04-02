@@ -1,0 +1,235 @@
+<h1 class="text-center mb-5 mt-3">PELICULAS</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 rounded-3" style=" background-color:rgb(181, 210, 255);">
+                <p>
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" [(ngModel)]="pelicula.nombre"/>
+                </p>
+                <p>
+                    <label>Sinopsis:</label>
+                    <textarea class="form-control" [(ngModel)]="pelicula.sinopsis" cols="30" rows="10"></textarea>
+                </p>
+                <p>
+                    <label>Genero</label>
+                    <select [(ngModel)]="pelicula.idGenero" class="form-control">
+                        <option *ngFor=" let genero of generos" value="{{genero.id}}">
+                            {{ genero.descripcion}}
+                        </option>
+                    </select>
+                </p>
+
+                <p>
+                    <label>Año:</label>
+                    <input type="text" class="form-control" [(ngModel)]="pelicula.anio"/>
+                </p>
+                <p>
+                    <label>clasificacion:</label>
+                    <input type="text" class="form-control" [(ngModel)]="pelicula.clasificacion"/>
+                </p>
+                <p>
+                    <label>Director:</label>
+                    <input type="text" class="form-control" [(ngModel)]="pelicula.director"/>
+                </p>
+                <p>
+                    <label>Duracion:</label>
+                    <input type="text" class="form-control" [(ngModel)]="pelicula.duracion"/>
+                </p>
+                <p>
+                    <label>Imagen:</label>
+                    <img src=" [(ngModel)]='pelicula.url'" alt="">
+                    <input type="text" class="form-control" [(ngModel)]="pelicula.url"/>
+                </p>
+                <p>
+                    <label>Sala</label>
+                    <select [(ngModel)]="pelicula.idSala" class="form-control">
+                        <option *ngFor=" let sala of salas" value="{{sala.id}}">
+                            {{ sala.nombre}}
+                        </option>
+                    </select>
+                </p>
+            
+                <table>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-success mb-2 mx-2" 
+                            (click)="this.insertarPelicula()">Insertar</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary mb-2 mx-2" 
+                            (click)="this.update()">Actualizar</button>
+                        </td>
+            
+                    </tr>
+                </table>
+            </div>
+        <div class="col rounded-3"  style="padding-left: 3rem;">
+            <table class="table">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Sinopsis</th>
+                    <th>Genero</th>
+                    <th>Año</th>
+                    <th>Clasificación</th>
+                    <th>Director</th>
+                    <th>Duración</th>
+                    <th>Sala</th>
+                    <th>Póster</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pelicula of peliculas">
+                        <td>{{ pelicula.nombre }}</td>
+                        <td>{{ pelicula.sinopsis }}</td>
+                        <td>
+                        <div *ngFor="let genero of generos">
+                                <p *ngIf="pelicula.idGenero == genero.id">
+                                    {{ genero.descripcion}}
+                                </p>
+                        </div>
+                        </td>
+                        <td>{{ pelicula.anio }}</td>
+                        <td>{{ pelicula.clasificacion }}</td>
+                        <td>{{ pelicula.director }}</td>
+                        <td>{{ pelicula.duracion }}</td>
+                        <td>                        
+                        <div *ngFor="let sala of salas">
+                            <p *ngIf="pelicula.idSala == sala.id">
+                                {{ sala.nombre }}
+                            </p>
+                        </div>
+                        </td>
+                        <td><img src="{{ pelicula.url }}" style="width: 60px;"></td>
+                        
+                        <td>
+                            <button type="button" class="btn btn-primary" style="width: 7rem;" (click)="selectPelicula(pelicula)">
+                                Seleccionar
+                            </button>
+                            
+                            <button type="button" class="btn btn-danger mt-2" style="width: 7rem;" 
+                            (click)="this.delete(pelicula.id)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </div>
+</div>
+
+
+<h1 class="text-center mb-5 mt-3">GENEROS</h1>
+
+
+<div class="container-sm">
+    <div class="row">
+        <div class="col-sm-4 rounded-3" style=" background-color:rgb(181, 210, 255);">
+                <p>
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" [(ngModel)]="genero.descripcion"/>
+                </p>
+                <table>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-success mb-2 mx-2" 
+                            (click)="this.insertarGenero">Insertar</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary mb-2 mx-2" 
+                            (click)="this.updateGenero()">Actualizar</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger mb-2 mx-2" 
+                            (click)="this.deleteGenero(genero.id)">Eliminar</button>
+                        </td>
+            
+                    </tr>
+                </table>
+            </div>
+        <div class="col rounded-3"  style="padding-left: 3rem;">
+            <table class="table">
+                <thead>
+                    <th>Nombre</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let genero of generos">
+                        <td>{{ genero.descripcion }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="selectGenero(genero)">
+                                Seleccionar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </div>
+</div>
+
+
+
+<h1 class="text-center mb-5 mt-3">SALAS</h1>
+
+
+<div class="container-sm">
+    <div class="row">
+        <div class="col-sm-4 rounded-3" style=" background-color:rgb(181, 210, 255);">
+                <p>
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" [(ngModel)]="sala.nombre">
+                </p>
+                <p>
+                    <label>Tipo:</label>
+                    <input type="text" class="form-control" [(ngModel)]="sala.tipo">
+                </p>
+                <p>
+                    <label>Descripcion:</label>
+                    <input type="text" class="form-control" [(ngModel)]="sala.descripcion">
+                </p>
+                <table>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-success mb-2 mx-2" 
+                            (click)="this.insertarSala()">Insertar</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary mb-2 mx-2" 
+                            (click)="this.updateSala()">Actualizar</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger mb-2 mx-2" 
+                            (click)="this.deleteSala(sala.id)">Eliminar</button>
+                        </td>
+            
+                    </tr>
+                </table>
+            </div>
+        <div class="col rounded-3"  style="padding-left: 3rem;">
+            <table class="table">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Descripcion</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sala of salas">
+                        <td>{{ sala.nombre }}</td>
+                        <td>{{ sala.tipo }}</td>
+                        <td>{{ sala.descripcion }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="selectSala(sala)">
+                                Seleccionar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </div>
+</div>
+
+
+
+
+
+
